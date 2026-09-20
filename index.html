@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>Tanatswa Matashu — IT Portfolio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --navy:       #0A1628;
+      --navy-deep:  #060E1A;
+      --gold:       #C9A84C;
+      --gold-soft:  #E2C97E;
+      --off-white:  #F0EDE6;
+      --text-muted: #9BA8BB;
+      --rule:       #1E2E45;
+      box-sizing: border-box;
+      padding-top: env(safe-area-inset-top, 0px);
+      padding-bottom: env(safe-area-inset-bottom, 0px);
+    }
+    *, *::before, *::after { box-sizing: inherit; margin: 0; padding: 0; }
+    html { scroll-padding-top: env(safe-area-inset-top, 0px); }
+    body {
+      background: var(--navy);
+      color: var(--off-white);
+      font-family: 'Inter', system-ui, sans-serif;
+      font-size: 16px;
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+    }
+    nav {
+      position: fixed;
+      top: env(safe-area-inset-top, 0px);
+      left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1.1rem 2.5rem;
+      background: rgba(6, 14, 26, 0.92);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid var(--rule);
+    }
+    nav .logo {
+      font-family: 'DM Serif Display', Georgia, serif;
+      font-size: 1.05rem;
+      color: var(--gold);
+      text-decoration: none;
+    }
+    nav ul { list-style: none; display: flex; gap: 2rem; }
+    nav ul a {
+      font-size: 0.8rem;
+      font-weight: 500;
+      color: var(--text-muted);
+      text-decoration: none;
+      letter-spacing: 0.03em;
+      transition: color 0.2s;
+    }
+    nav ul a:hover { color: var(--gold-soft); }
+    #hero {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 8rem 2.5rem 5rem;
+      max-width: 860px;
+    }
+    .hero-eyebrow {
+      font-size: 0.78rem;
+      font-weight: 500;
+      color: var(--gold);
+      letter-spacing: 0.08em;
+      margin-bottom: 1.5rem;
+    }
+    h1 {
+      font-family: 'DM Serif Display', Georgia, serif;
+      font-size: clamp(3rem, 7vw, 5.5rem);
+      line-height: 1.08;
+      color: var(--off-white);
+      margin-bottom: 1.8rem;
+    }
+    h1 em { font-style: italic; color: var(--gold); }
+    .hero-intro {
+      font-size: 1.05rem;
+      color: var(--text-muted);
+      max-width: 56ch;
+      line-height: 1.75;
+      margin-bottom: 2.5rem;
+    }
+    .hero-links { display: flex; gap: 1.2rem; flex-wrap: wrap; }
+    .btn {
+      display: inline-block;
+      padding: 0.65rem 1.6rem;
+      font-size: 0.82rem;
+      font-weight: 600;
+      text-decoration: none;
+      border: 1.5px solid var(--gold);
+      color: var(--gold);
+      letter-spacing: 0.04em;
+      transition: background 0.2s, color 0.2s;
+    }
+    .btn:hover { background: var(--gold); color: var(--navy-deep); }
+    .btn-ghost { border-color: var(--rule); color: var(--text-muted); }
+    .btn-ghost:hover { background: var(--rule); color: var(--off-white); }
+    section {
+      padding: 5rem 2.5rem;
+      max-width: 860px;
+      margin: 0 auto;
+    }
+    .section-rule {
+      border: none;
+      border-top: 1px solid var(--rule);
+      margin-bottom: 3.5rem;
+    }
+    h2 {
+      font-family: 'DM Serif Display', Georgia, serif;
+      font-size: clamp(1.8rem, 3.5vw, 2.6rem);
+      color: var(--off-white);
+      margin-bottom: 1.8rem;
+      line-height: 1.2;
+    }
+    h3 {
+      font-family: 'DM Serif Display', Georgia, serif;
+      font-size: 1.25rem;
+      color: var(--gold-soft);
+      margin-bottom: 0.6rem;
+      font-style: italic;
+    }
+    p {
+      color: #C8D0DC;
+      font-size: 0.97rem;
+      max-width: 68ch;
+      margin-bottom: 1.1rem;
+      line-height: 1.8;
+    }
+    .principles-grid { display: grid; gap: 2.8rem; margin-top: 0.5rem; }
+    .principle { border-left: 2px solid var(--gold); padding-left: 1.5rem; }
+    .principle-sources { margin-top: 0.9rem; font-size: 0.8rem; color: var(--text-muted); line-height: 1.6; }
+    .principle-sources span { display: block; margin-bottom: 0.25rem; }
+    .resume-block { margin-bottom: 2.8rem; }
+    .resume-block h3 {
+      font-style: normal;
+      font-family: 'Inter', system-ui, sans-serif;
+      font-size: 0.72rem;
+      font-weight: 600;
+      color: var(--gold);
+      letter-spacing: 0.1em;
+      margin-bottom: 1rem;
+      text-transform: uppercase;
+    }
+    .resume-entry { margin-bottom: 1.5rem; }
+    .resume-title {
+      font-family: 'DM Serif Display', Georgia, serif;
+      font-size: 1.1rem;
+      color: var(--off-white);
+      margin-bottom: 0.15rem;
+    }
+    .resume-meta { font-size: 0.8rem; color: var(--text-muted); margin-bottom: 0.5rem; }
+    .resume-entry p { font-size: 0.9rem; max-width: 64ch; }
+    .skills-table { width: 100%; border-collapse: collapse; font-size: 0.88rem; margin-top: 0.5rem; }
+    .skills-table td { padding: 0.55rem 0; border-bottom: 1px solid var(--rule); color: #C8D0DC; vertical-align: top; }
+    .skills-table td:first-child { color: var(--gold-soft); font-weight: 500; width: 38%; padding-right: 1rem; }
+    .projects-list { display: grid; gap: 2rem; }
+    .project-card { border-top: 1px solid var(--rule); padding-top: 1.5rem; }
+    .project-card h3 { font-style: normal; font-size: 1.05rem; color: var(--off-white); margin-bottom: 0.2rem; font-family: 'DM Serif Display', Georgia, serif; }
+    .project-tag { display: inline-block; font-size: 0.72rem; font-weight: 500; color: var(--gold); border: 1px solid var(--gold); padding: 0.15rem 0.55rem; margin-bottom: 0.7rem; }
+    .dilemma-body p { margin-bottom: 1.1rem; }
+    .reflection-body p { margin-bottom: 1.1rem; font-style: italic; color: #B8C4D4; }
+    footer {
+      border-top: 1px solid var(--rule);
+      padding: 2.5rem;
+      max-width: 860px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+    footer p { font-size: 0.78rem; color: var(--text-muted); max-width: none; margin: 0; }
+    footer a { color: var(--gold); text-decoration: none; }
+    @media (max-width: 640px) {
+      nav { padding: 1rem 1.2rem; }
+      nav ul { gap: 1.2rem; }
+      #hero { padding: 7rem 1.2rem 4rem; }
+      section { padding: 3.5rem 1.2rem; }
+      footer { padding: 2rem 1.2rem; flex-direction: column; align-items: flex-start; }
+    }
+    @media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
+    :focus-visible { outline: 2px solid var(--gold); outline-offset: 3px; }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a href="#hero" class="logo">Tanatswa Matashu</a>
+  <ul>
+    <li><a href="#principles">Principles</a></li>
+    <li><a href="#resume">Résumé</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#ethics">Ethics</a></li>
+    <li><a href="#reflection">Reflection</a></li>
+  </ul>
+</nav>
+
+<div id="hero">
+  <p class="hero-eyebrow">Information Technology · Ensign College / BYU-Pathway</p>
+  <h1>Tanatswa<br><em>Matashu</em></h1>
+  <p class="hero-intro">Final-year IT student studying from Kadoma, Zimbabwe. Networking, cloud infrastructure, cybersecurity, and data. Building systems that work — and building toward a future that changes things.</p>
+  <div class="hero-links">
+    <a href="#projects" class="btn">View Projects</a>
+    <a href="#resume" class="btn btn-ghost">Résumé</a>
+  </div>
+</div>
+
+<section id="intro">
+  <hr class="section-rule" />
+  <h2>Introduction</h2>
+  <p>My name is Tanatswa Matashu, and I am a final-year Information Technology student at Ensign College, completing my degree through BYU-Pathway. I study from Kadoma, Zimbabwe — which means I have done most of my coursework in environments where the power might cut out mid-lab and the nearest technical peer is a video call away. That context is not incidental to who I am as an IT professional. It is the reason I troubleshoot patiently, work independently, and do not panic when things break.</p>
+  <p>My technical interests sit at the intersection of networking, cloud infrastructure, cybersecurity, and data. Over the course of my degree I have designed networks in Cisco Packet Tracer, deployed SIEM solutions using Wazuh, written Python scripts for security operations, modeled dimensional databases, and proposed cloud solutions across AWS and Azure. My capstone project — which uses a local barbershop as the scenario organization — brings all of those threads together into a single, integrated IT system design.</p>
+  <p>I am building toward certifications in networking and cybersecurity, with AZ-900 and CLF-C02 currently in progress. My longer-term goal is to work in the telecom industry, with data science as a parallel track I intend to develop over time. This portfolio is a record of that journey — technical, personal, and still in progress.</p>
+</section>
+
+<section id="principles">
+  <hr class="section-rule" />
+  <h2>Guiding Principles</h2>
+  <div class="principles-grid">
+    <div class="principle">
+      <h3>Truth</h3>
+      <p>Truth, for me, is not something you inherit — it is something you earn through honest inquiry. I value the kind of thinking that refuses to accept something just because it was handed to me. Whether I am reading a scripture, studying a technical concept, or evaluating a life decision, I want to understand the why behind it. This principle shapes how I approach learning: I do not memorize, I investigate. I believe genuine belief is stronger when it has been questioned and survived. Truth pursued honestly is more valuable than truth simply received.</p>
+      <p>In my professional life, this principle pushes me to verify before I implement, to read documentation rather than assume, and to acknowledge when I do not know something rather than guess. It is the foundation on which the other two principles rest — without a commitment to truth, clarity and fairness have nothing to stand on.</p>
+      <div class="principle-sources">
+        <span>Doctrine and Covenants 93:24 — "Truth is knowledge of things as they are, and as they were, and as they are to come."</span>
+        <span>Russell M. Nelson, "Christ Is Risen; Faith in Him Will Move Mountains," General Conference, April 2021.</span>
+        <span>Dieter F. Uchtdorf, "What Is Truth?" CES Devotional, January 2013.</span>
+      </div>
+    </div>
+    <div class="principle">
+      <h3>Mental Clarity</h3>
+      <p>Mental clarity is the discipline of keeping my thinking clean — uncrowded, focused, and honest with itself. I live in an environment with real distractions: inconsistent power, limited resources, the pressure of studying remotely in a timezone far from my institution. Mental clarity is not a luxury for me; it is a survival skill. It means knowing what matters right now and setting aside what does not.</p>
+      <p>This principle connects deeply to how I handle uncertainty. I think often about my place in the world, about things beyond my reach, and those thoughts can become heavy. Clarity is what pulls me back — not by denying the weight, but by finding the one next step I can actually take. Professionally, this translates into structured problem-solving: break the system down, isolate the variable, fix what is in scope.</p>
+      <div class="principle-sources">
+        <span>Doctrine and Covenants 9:8 — on studying things out in your mind before seeking confirmation.</span>
+        <span>David A. Bednar, "Gather Together in One All Things in Christ," General Conference, October 2018.</span>
+        <span>3 Nephi 13:19–22 — on keeping the eye single and avoiding divided attention.</span>
+      </div>
+    </div>
+    <div class="principle">
+      <h3>Fairness</h3>
+      <p>Fairness, to me, starts with empathy — the genuine effort to understand where someone else is standing before I decide how to respond to them. I worked in a gaming café, and that job taught me more about people than any classroom. You learn quickly that people carry things you cannot see, and that how you treat someone in a frustrated moment either builds trust or breaks it permanently.</p>
+      <p>In technology, fairness matters too. Systems built without empathy exclude people. Security policies written without fairness punish the wrong people. I want to build things — and eventually lead teams — in a way that reflects the understanding that people on the other end of a system are not data points. They are people with pressures and contexts I may never fully see.</p>
+      <div class="principle-sources">
+        <span>Mosiah 18:8–9 — on bearing one another's burdens and mourning with those who mourn.</span>
+        <span>Dieter F. Uchtdorf, "Forget Me Not," General Conference, October 2011.</span>
+        <span>Matthew 7:12 — the Golden Rule as a foundation for empathy in both personal and professional life.</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="resume">
+  <hr class="section-rule" />
+  <h2>Résumé</h2>
+  <div class="resume-block">
+    <h3>Education</h3>
+    <div class="resume-entry">
+      <div class="resume-title">Bachelor of Science, Information Technology</div>
+      <div class="resume-meta">Ensign College / BYU-Pathway Worldwide · Expected Graduation 2026</div>
+      <p>Networking, Cloud Computing, Cybersecurity, Linux Administration, Python Scripting, Database Modeling, IT Capstone.</p>
+    </div>
+  </div>
+  <div class="resume-block">
+    <h3>Technical Skills</h3>
+    <table class="skills-table">
+      <tr><td>Operating Systems</td><td>Windows, Ubuntu/Linux</td></tr>
+      <tr><td>Networking</td><td>Cisco Packet Tracer, TCP/IP, subnetting, VLANs</td></tr>
+      <tr><td>Cloud</td><td>AWS (CLF-C02 in progress), Microsoft Azure (AZ-900 in progress)</td></tr>
+      <tr><td>Cybersecurity</td><td>Wazuh 4.7.5 SIEM, MITRE ATT&CK framework, threat detection</td></tr>
+      <tr><td>Programming</td><td>Python (security scripting), SQL</td></tr>
+      <tr><td>Databases</td><td>Relational databases, dimensional modeling</td></tr>
+      <tr><td>Other</td><td>Virtualization, IT troubleshooting, technical documentation</td></tr>
+    </table>
+  </div>
+  <div class="resume-block">
+    <h3>Certifications in Progress</h3>
+    <p>Microsoft Azure Fundamentals (AZ-900) · AWS Cloud Practitioner (CLF-C02) · CompTIA Network+ / Security+ (planned)</p>
+  </div>
+  <div class="resume-block">
+    <h3>Experience</h3>
+    <div class="resume-entry">
+      <div class="resume-title">Gaming Café Staff</div>
+      <div class="resume-meta">Kadoma, Zimbabwe</div>
+      <p>Provided customer service in a fast-paced environment. Managed on-floor hardware and connectivity issues. Developed conflict resolution and communication skills through daily customer interaction.</p>
+    </div>
+  </div>
+</section>
+
+<section id="projects">
+  <hr class="section-rule" />
+  <h2>Projects</h2>
+  <div class="projects-list">
+    <div class="project-card">
+      <h3>IT Capstone — Forest Fades Barbershop Infrastructure</h3>
+      <div><span class="project-tag">IT497 · 2026</span></div>
+      <p>Designed and documented a complete IT infrastructure for a small business scenario, including network topology, cloud integration, cybersecurity policy, and data management strategy.</p>
+    </div>
+    <div class="project-card">
+      <h3>SIEM Deployment &amp; Linux Hardening</h3>
+      <div><span class="project-tag">IT370 · 2025</span></div>
+      <p>Deployed Wazuh 4.7.5 as a SIEM solution in a hardened Ubuntu environment. Configured log monitoring, alert rules, and security event dashboards.</p>
+    </div>
+    <div class="project-card">
+      <h3>Python Security Scripting</h3>
+      <div><span class="project-tag">IT316 · 2025</span></div>
+      <p>Developed Python scripts to automate security operations tasks, including log parsing and basic threat detection workflows aligned with the MITRE ATT&CK framework.</p>
+    </div>
+    <div class="project-card">
+      <h3>Cisco Network Design</h3>
+      <div><span class="project-tag">IT350 · 2025</span></div>
+      <p>Designed a multi-VLAN network topology using Cisco Packet Tracer, including subnetting, routing configuration, and full network documentation.</p>
+    </div>
+    <div class="project-card">
+      <h3>Cloud Solution Proposal</h3>
+      <div><span class="project-tag">IT160 · 2024</span></div>
+      <p>Proposed a cloud migration strategy using AWS and Azure services, including cost analysis, service selection rationale, and an implementation roadmap.</p>
+    </div>
+    <div class="project-card">
+      <h3>Dimensional Database Model</h3>
+      <div><span class="project-tag">IT143 · 2024</span></div>
+      <p>Designed a dimensional database schema including fact and dimension tables, ETL logic, and reporting considerations.</p>
+    </div>
+  </div>
+</section>
+
+<section id="ethics">
+  <hr class="section-rule" />
+  <h2>Ethical Dilemma Analysis</h2>
+  <p style="color: var(--text-muted); font-size:0.82rem; margin-bottom:1.8rem;">Case Study: The 2017 Equifax Data Breach</p>
+  <div class="dilemma-body">
+    <p>In 2017, Equifax — one of the three major consumer credit reporting agencies in the United States — suffered one of the largest data breaches in history. The personal information of approximately 147 million people was exposed, including names, Social Security numbers, birth dates, addresses, and in some cases driver's license and credit card numbers. The breach was traced to a known vulnerability in Apache Struts, a widely used open-source web application framework. Critically, a patch for this vulnerability had already been released by Apache months before the breach occurred. Equifax had been notified of the vulnerability and failed to apply the patch in a timely manner.</p>
+    <p>The ethical failures here operate on several levels. The most immediate is negligence: Equifax had a responsibility to protect the sensitive data of millions of people who had no meaningful choice in whether their data was held by the company. Credit bureaus collect consumer data as a matter of course — individuals do not opt in, and they cannot opt out. That makes the obligation to protect that data not just a regulatory requirement but a fundamental ethical one. Equifax knew the vulnerability existed, had a clear remediation path available, and did not act on it. That is not a technical failure. It is an ethical failure disguised as one.</p>
+    <p>The second layer involves the response after the breach was discovered. Equifax waited approximately six weeks before publicly disclosing the breach — a delay that left affected consumers unable to take protective action. During that same period, several senior executives sold company stock before the breach was announced, raising serious questions about insider trading.</p>
+    <p>From a professional ethics standpoint, this case is a clear example of what happens when organizations treat security as a compliance checkbox rather than an ongoing responsibility. Most professional IT standards require practitioners to act in the interest of the public, protect systems and data diligently, and disclose vulnerabilities and incidents in a timely and transparent manner. Equifax failed on all three counts. The lesson for anyone entering the IT field is straightforward: you are not just responsible for the systems you build — you are responsible to the people those systems affect.</p>
+  </div>
+</section>
+
+<section id="reflection">
+  <hr class="section-rule" />
+  <h2>Reflective Activity</h2>
+  <div class="reflection-body">
+    <p>There is a version of reflection that looks deliberate — you sit in a designated place, at a designated time, and think designated thoughts. My reflective moments do not work like that. They come when I am walking somewhere and my mind goes quiet enough to hear itself. They come in the middle of a conversation with someone I trust, when something is said that lands differently than expected. They come when I am sitting alone in a room and the noise of everything I am supposed to be doing finally stops long enough for something more honest to surface.</p>
+    <p>What surfaces in those moments is not always comfortable. I think about my place in this world — not in an abstract, philosophical sense, but in a very specific, personal one. I wonder what I am supposed to become. I look for signs that I am moving in the right direction, and sometimes I cannot find them. I think about my family and the weight of circumstances that feel far beyond what any one person should have to carry, and I find myself wondering when things are going to change. That combination — purpose, signs, family, change — tends to produce more fear and uncertainty than peace. At least initially.</p>
+    <p>But I have noticed something in those moments. The uncertainty does not go away, but it becomes more manageable when I stop trying to see the whole path at once. The mental clarity I try to practice does not eliminate the unknown — it just narrows my focus to what is actually in front of me. I cannot control when my family's circumstances change. I can control whether I finish this degree. I cannot control what I am meant to become in some ultimate sense. I can control whether I show up honestly to who I am today.</p>
+    <p>Professionally, I think these reflections matter more than they might appear to. The person who sits with fear and keeps moving anyway is not the same as the person who never felt afraid. I am learning, through both my coursework and these quieter moments, that integrity under pressure — whether that pressure is a security incident, a failed lab, or a question I cannot answer — is built in small increments. The same discipline that pulls me back from spiraling thoughts is the same discipline that helps me isolate a bug, document a network, or write a security policy when I would rather do anything else. The two are not separate. They are the same thing, practiced in different rooms.</p>
+  </div>
+</section>
+
+<footer>
+  <p>Tanatswa Matashu · IT497 Capstone · Ensign College / BYU-Pathway · 2026</p>
+  <p><a href="https://github.com/jcbjms09" target="_blank" rel="noopener">GitHub</a></p>
+</footer>
+
+</body>
+</html>
